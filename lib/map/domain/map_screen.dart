@@ -27,6 +27,8 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
 
   UserLocationView? userLocationView;
 
+  late UserLocationCallback userLocationCallback;
+
 
 
   @override
@@ -40,6 +42,25 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurpleAccent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0),
+        ),
+        onPressed: () async {
+          if (_userLocation != null) {
+            await yandexMapController.moveCamera(
+              CameraUpdate.newCameraPosition(
+                _userLocation!.copyWith(zoom: 15),
+              ),
+              animation: const MapAnimation(
+                type: MapAnimationType.linear,
+                duration: 0.3,
+              ),
+            );
+          }
+        },
+        child: const Icon(Icons.info)
+      ),
       body: YandexMap(
         mapObjects: [],
         nightModeEnabled: true,
@@ -66,10 +87,12 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
           }
           // меняем внешний вид маркера - делаем его непрозрачным
           return view.copyWith(
-            arrow: view.arrow.copyWith(isVisible: false),
-            accuracyCircle: view.accuracyCircle.copyWith(isVisible: false, strokeWidth: 0),
+            arrow: view.arrow.copyWith(opacity: 1, isVisible: false, icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/images/location.png'), scale: 0.1, anchor: const Offset(0, 1)))),
+            accuracyCircle: view.accuracyCircle.copyWith(isVisible: false, strokeWidth: 0, fillColor: const Color.fromRGBO(10, 12, 131, 00)),
             pin: view.pin.copyWith(
               opacity: 1,
+              icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/images/location.png'), anchor: const Offset(0, 1), scale: 0.1)),
+
             ),
           );
         },
@@ -86,3 +109,5 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
 
 
 }
+
+

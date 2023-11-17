@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TabView Tutorial GFG',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+      theme: ThemeData(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
+      themeMode: ThemeMode.system,
       home: const HomePage(),
     );
   }
@@ -31,6 +33,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode: ThemeMode.system,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
