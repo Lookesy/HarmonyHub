@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'app_lat_long.dart';
+
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import 'location_service.dart';
@@ -29,6 +29,9 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
 
   late UserLocationCallback userLocationCallback;
 
+  CircleMapObject? circleMapObject;
+
+  MapObject? mapObject;
 
 
   @override
@@ -38,6 +41,25 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
   }
 
 
+  List<MapObject> _circlesList(){
+    const List<MapObject> circles = [
+      CircleMapObject(
+        mapId: MapObjectId('circle_1'),
+        circle: Circle(center: Point(latitude: 53.375191, longitude: 83.714504), radius: 100),
+        fillColor: Color.fromRGBO(219, 00, 88, 98),
+        strokeWidth: 2,
+        strokeColor: Color.fromRGBO(156, 22, 18, 80),
+      ),
+      CircleMapObject(
+        mapId: MapObjectId('circle_2'),
+        circle: Circle(center: Point(latitude: 53.370158, longitude: 83.713960), radius: 100),
+        fillColor: Color.fromRGBO(35, 84, 121, 98),
+        strokeWidth: 2,
+        strokeColor: Color.fromRGBO(156, 22, 18, 80),
+      ),
+    ];
+    return circles;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +84,7 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
         child: const Icon(Icons.info)
       ),
       body: YandexMap(
-        mapObjects: [],
+        mapObjects: _circlesList(),
         nightModeEnabled: true,
         onMapCreated: (controller) async {
           yandexMapController = controller;
@@ -106,8 +128,8 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
       await LocationService().requestPermission();
     }
   }
-
-
 }
+
+
 
 
