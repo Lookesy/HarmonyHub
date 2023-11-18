@@ -6,6 +6,8 @@ import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import 'location_service.dart';
 
+import 'user_circles.dart';
+
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
 
@@ -32,6 +34,8 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
   CircleMapObject? circleMapObject;
 
   MapObject? mapObject;
+  
+  UserInfo? userInfo;
 
 
   @override
@@ -39,28 +43,8 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
     super.initState();
     _initPermission().ignore();
   }
-
-
-  List<MapObject> _circlesList(){
-    const List<MapObject> circles = [
-      CircleMapObject(
-        mapId: MapObjectId('circle_1'),
-        circle: Circle(center: Point(latitude: 53.375191, longitude: 83.714504), radius: 100),
-        fillColor: Color.fromRGBO(219, 00, 88, 98),
-        strokeWidth: 2,
-        strokeColor: Color.fromRGBO(156, 22, 18, 80),
-      ),
-      CircleMapObject(
-        mapId: MapObjectId('circle_2'),
-        circle: Circle(center: Point(latitude: 53.370158, longitude: 83.713960), radius: 100),
-        fillColor: Color.fromRGBO(35, 84, 121, 98),
-        strokeWidth: 2,
-        strokeColor: Color.fromRGBO(156, 22, 18, 80),
-      ),
-    ];
-    return circles;
-  }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +68,7 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
         child: const Icon(Icons.info)
       ),
       body: YandexMap(
-        mapObjects: _circlesList(),
+        mapObjects: createCircles(userList),
         nightModeEnabled: true,
         onMapCreated: (controller) async {
           yandexMapController = controller;
