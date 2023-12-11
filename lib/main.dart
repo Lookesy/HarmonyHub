@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'map/domain/map_screen.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
+import 'user_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
       home: DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.deepPurple,
@@ -52,6 +53,7 @@ class HomePage extends StatelessWidget {
               Icon(Icons.directions_car),
               Map(),
               Icon(Icons.directions_bike),
+              Profile(),
             ],
           ),
         ),
@@ -81,6 +83,10 @@ class HomePage extends StatelessWidget {
             text: "Messenger",
             icon: Icon(Icons.message),
           ),
+          Tab(
+            text: "Profile",
+            icon: Icon(Icons.man),
+          ),
         ],
       ),
     );
@@ -101,6 +107,22 @@ class Map extends StatelessWidget{
         primarySwatch: Colors.deepPurple,
       ),
       home: const MapScreen(),
+    );
+  }
+}
+
+
+
+
+class Profile extends StatelessWidget{
+  const Profile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Profile Page',
+      home: PopupProfileWidget(),
     );
   }
 }
