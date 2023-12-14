@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'map/domain/map_screen.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 import 'user_profile.dart';
+import 'music_player/player_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
           body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              Icon(Icons.directions_car),
+              MusicPlayer(),
               Map(),
               Icon(Icons.directions_bike),
               Profile(),

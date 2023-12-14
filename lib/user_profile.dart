@@ -29,7 +29,7 @@ class _PopupProfileWidgetState extends State<PopupProfileWidget>{
               children: [
                 const SizedBox(width: 25,),
                 CircleAvatar(backgroundColor: Colors.grey,
-                  radius: 100,
+                  radius: 50,
                   child: Padding(
                     padding: EdgeInsets.all(5),
                     child: ClipOval(
@@ -38,7 +38,7 @@ class _PopupProfileWidgetState extends State<PopupProfileWidget>{
                   ),
                 ),
                 const SizedBox(width: 50,),
-                const Text('UserNickname', textScaleFactor: 2, style: TextStyle(color: Colors.white),)
+                const Text('UserNickname', textScaleFactor: 1.5, style: TextStyle(color: Colors.white),)
               ],
           ),
 
