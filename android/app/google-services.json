@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521238673553",
+    "project_id": "harmonyhub-fbcf3",
+    "storage_bucket": "harmonyhub-fbcf3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521238673553:android:91d15fbfa2674f6d8a2730",
+        "android_client_info": {
+          "package_name": "com.harmonyhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGsJDdkdrs-NlGQRC6IrpIaIzQTX4KKXQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

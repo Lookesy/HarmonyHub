@@ -101,8 +101,11 @@ class _MapScreenState extends State<MapScreen> with AutomaticKeepAliveClientMixi
 
             ),
           );
+
         },
-      ));
+
+      )
+    );
     }
 
 

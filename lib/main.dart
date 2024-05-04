@@ -1,17 +1,29 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'map/domain/map_screen.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
 import 'user_profile.dart';
 import 'music_player/player_screen.dart';
+import 'auth/login_page.dart';
+import 'firebase_options.dart';
+import 'messenger/mess_main.dart';
 
-void main() {
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
-}
 
+}
 
 //Главный виджет с вкладками, содержащими остальные виджеты.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
 
   @override
@@ -24,13 +36,15 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      home: LoginPage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,17 +57,13 @@ class HomePage extends StatelessWidget {
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.deepPurple,
-            title: const Text("HarmonyHub", textAlign: TextAlign.center),
-          ),
           bottomNavigationBar: menu(),
-          body: const TabBarView(
+          body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
               MusicPlayer(),
               Map(),
-              Icon(Icons.directions_bike),
+              UsersPage(),
               Profile(),
             ],
           ),
@@ -127,4 +137,5 @@ class Profile extends StatelessWidget{
     );
   }
 }
+
 
