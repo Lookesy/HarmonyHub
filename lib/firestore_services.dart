@@ -47,3 +47,9 @@ Future<String> downloadURL(String imageName) async {
 
   return downloadURL;
 }
+
+Future<String> downloadOtherUserURL(String imageName, String userEmail) async {
+  String downloadURL = await FirebaseStorage.instance.ref('users/$userEmail/$imageName').getDownloadURL();
+
+  return downloadURL;
+}
