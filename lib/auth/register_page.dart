@@ -140,7 +140,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
                         firebaseFirestore.collection('users').doc(userCredential.user!.uid).set({
                           'uid':userCredential.user!.uid,
-                          'email':userCredential.user!.email
+                          'email':userCredential.user!.email,
+                          'firstName':'Не указано',
+                          'lastname':'Не указано',
+                          'age':'Не указано',
+                          'city':'Не указано'
                         });
 
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));

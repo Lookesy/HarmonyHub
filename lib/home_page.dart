@@ -12,14 +12,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 4,
+        length: 3,
         child: Scaffold(
           bottomNavigationBar: menu(),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
               MusicPlayer(),
-              MapScreen(),
               UsersPage(),
               PopupProfileWidget(),
             ],
@@ -41,7 +40,6 @@ class HomePage extends StatelessWidget {
         )
       ),
       child: TabBar(
-
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.tab,
@@ -52,10 +50,6 @@ class HomePage extends StatelessWidget {
           Tab(
             text: "Музыка",
             icon: Icon(Icons.headphones),
-          ),
-          Tab(
-            text: "Карта",
-            icon: Icon(Icons.map),
           ),
           Tab(
             text: "Чат",

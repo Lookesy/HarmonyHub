@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harmonyhubhest/style.dart';
 import 'firestore_services.dart';
 
 
@@ -22,67 +23,78 @@ class _PopupProfileWidgetState extends State<PopupProfileWidget>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0x303030),
-      body: ListView(
-        padding: EdgeInsets.all(0),
-        children: [
-          const SizedBox(height: 25,),
-          Row(
+      body: Container(
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/image 5.png'),
+              fit: BoxFit.cover,
+              opacity: 0.8
+          )
+        ),
+        child: Center(
+          child: Container(
+            width: MediaQuery.sizeOf(context).width*0.8,
+            height: MediaQuery.sizeOf(context).height*0.5,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.7),
+              borderRadius: BorderRadius.circular(25)
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(width: 25,),
                 GestureDetector(
                   child: FutureBuilder(
                       future: downloadURL('Avatar.jpg'),
                       builder: (context,AsyncSnapshot<String> snapshot){
                         if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData){
                           return CircleAvatar(
-                            radius: 50,
+                            radius: 75,
                             backgroundImage: NetworkImage(snapshot.data!),
                           );
                         }
                         if (snapshot.connectionState==ConnectionState.waiting){
                           return CircleAvatar(
-                            radius: 50,
+                            radius: 75,
                             child: CircularProgressIndicator(),
                           );
                         }
                         return CircleAvatar(
-                          radius: 50,
+                          radius: 75,
                         );
                       }
                   ),
                   onTap: (){
-                      setState(() {
-                        uploadImage().then((value) =>
-                            setState(() {
+                    setState(() {
+                      uploadImage().then((value) =>
+                          setState(() {
 
-                            })
-                        );
-                      });
+                          })
+                      );
+                    });
+                  },
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                FutureBuilder(
+                  future: getUserInfo(),
+                  builder: (context, snapshot){
+                    if(snapshot.connectionState!=ConnectionState.done){
+                      return Text('Loading...', style: TextStyle(color: Colors.white), textScaler: TextScaler.linear(1.5),);
+                    }
+                    return Text('$userEmail',
+                      style: interFS20
+                    );
                   },
                 ),
               ],
+            ),
           ),
-          const SizedBox(height: 25,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Divider(
-                color: Colors.white,
-              ),
-              FutureBuilder(
-                future: getUserInfo(),
-                builder: (context, snapshot){
-                  if(snapshot.connectionState!=ConnectionState.done){
-                    return Text('Loading...', style: TextStyle(color: Colors.white), textScaler: TextScaler.linear(1.5),);
-                  }
-                  return Text('$userEmail', style: TextStyle(color: Colors.black), textScaler: TextScaler.linear(1.5),);
-                },
-              ),
-            ],
-          )
-        ],
-      ),
+        ),
+      )
     );
   }
 

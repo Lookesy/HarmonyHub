@@ -29,7 +29,23 @@ class _ChatPageState extends State<ChatPage> {
     if(_messageController.text.isNotEmpty){
       await _chatService.sendMessage(widget.receiverUserID, _messageController.text);
       _messageController.clear();
+      scrollToBottom();
     }
+  }
+
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance
+  //       .addPostFrameCallback((_) => scrollToBottom());
+  // }
+
+  void scrollToBottom() {
+    final bottomOffset = _messageListController.position.maxScrollExtent+50;
+    _messageListController.animateTo(
+      bottomOffset,
+      duration: Duration(milliseconds: 100),
+      curve: Curves.easeInOut,
+    );
   }
 
   @override
@@ -104,6 +120,21 @@ class _ChatPageState extends State<ChatPage> {
               height: MediaQuery.sizeOf(context).height-140,
               width: MediaQuery.sizeOf(context).width,
               child: _buildMessageList(),
+            ),
+
+            Align(
+              child: FloatingActionButton(
+                  onPressed: (){
+                    scrollToBottom();
+                  },
+                backgroundColor: Colors.black.withOpacity(0.3),
+                child: Icon(
+                    Icons.arrow_downward,
+                  size: 35,
+                  color: Colors.white.withOpacity(0.5),
+                ),
+              ),
+              alignment: Alignment(0.955, 0.75),
             ),
 
             Positioned.fill(
@@ -186,7 +217,7 @@ class _ChatPageState extends State<ChatPage> {
       alignment: Alignment.center,
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.black26,
+        color: Colors.black.withOpacity(0.5),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(10),
             bottomLeft: Radius.circular(10)
@@ -225,7 +256,7 @@ class _ChatPageState extends State<ChatPage> {
           IconButton(
             onPressed: sendMessage,
             icon: Icon(
-              Icons.arrow_upward,
+              Icons.send,
               size: 40,
               color: Colors.blue,
             ),

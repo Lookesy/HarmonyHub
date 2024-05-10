@@ -150,7 +150,11 @@ class _LoginPageState extends State<LoginPage> {
 
                       firebaseFirestore.collection('users').doc(userCredential.user!.uid).set({
                         'uid':userCredential.user!.uid,
-                        'email':userCredential.user!.email
+                        'email':userCredential.user!.email,
+                        'firstName':'Не указано',
+                        'lastname':'Не указано',
+                        'age':'Не указано',
+                        'city':'Не указано'
                       }, SetOptions(merge: true));
 
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
