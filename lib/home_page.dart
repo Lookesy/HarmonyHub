@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:harmonyhubhest/music_player/music_player_mainpage.dart';
 import 'package:harmonyhubhest/user_profile.dart';
-import 'map/domain/map_screen.dart';
 import 'messenger/mess_main.dart';
-import 'music_player/player_screen.dart';
 import 'style.dart';
 
 

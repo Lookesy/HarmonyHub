@@ -247,7 +247,7 @@ class _ChatPageState extends State<ChatPage> {
                       controller: _messageController,
                       obscureText: false,
                     ),
-                    width: MediaQuery.sizeOf(context).width*0.75,
+                    width: MediaQuery.sizeOf(context).width*0.70,
                   )
                 ],
               )

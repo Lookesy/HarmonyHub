@@ -54,12 +54,7 @@ class _UsersPageState extends State<UsersPage>{
                 height: 60,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    gradient: LinearGradient(
-                        colors: [
-                          Colors.deepPurple,
-                          Colors.cyan
-                        ]
-                    )
+                    color: Colors.deepPurple.shade800.withOpacity(0.6)
                 ),
                 child: Row(
                   children: [
@@ -138,9 +133,17 @@ class _UsersPageState extends State<UsersPage>{
                                       topRight: Radius.circular(50),
                                       bottomRight: Radius.circular(50)
                                   ),
-                                  child: Image.asset(
-                                    'assets/images/algorithm.png',
-                                    fit: BoxFit.cover,
+                                  child: FutureBuilder(
+                                      future: downloadOtherUserURL('TrackImage.jpg', data['email']),
+                                      builder: (context,AsyncSnapshot<String> snapshot){
+                                        if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData){
+                                          return Image(image: NetworkImage(snapshot.data!));
+                                        }
+                                        if (snapshot.connectionState==ConnectionState.waiting){
+                                          return Container();
+                                        }
+                                        return Container();
+                                      }
                                   ),
                                 ),
                               )
@@ -155,13 +158,15 @@ class _UsersPageState extends State<UsersPage>{
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Flexible(
-                                child: Text('Artist',
+                                child: Text(
+                                  data['trackAuthor'],
                                   overflow: TextOverflow.ellipsis,
                                   style: interFS15,
                                 ),
                               ),
                               Flexible(
-                                child: Text('Track name',
+                                child: Text(
+                                  data['trackTitle'],
                                   overflow: TextOverflow.ellipsis,
                                   style: interFS15,
                                 ),

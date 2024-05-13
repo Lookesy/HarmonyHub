@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
 import 'dart:io';
+
+import 'package:path_provider/path_provider.dart';
 
 var userEmail;
 var userUId;
@@ -40,6 +46,29 @@ Future<void> uploadImage() async {
     print(e);
   }
 }
+
+Future<File> getImageFileFromAssets(String path) async {
+  final byteData = await rootBundle.load(path);
+
+  final file = File('${(await getTemporaryDirectory()).path}/$path');
+  await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+
+  return file;
+}
+
+Future<void> uploadTrackImage(trackImage) async {
+  final firebaseUser = FirebaseAuth.instance.currentUser;
+  var userEmail = firebaseUser?.email;
+  final storageRef = FirebaseStorage.instance.ref('users/$userEmail/TrackImage.jpg');
+
+  try {
+    await storageRef.putFile(trackImage);
+  } on FirebaseException catch (e){
+    print('ошибка в загрузке');
+    print(e);
+  }
+}
+
 
 Future<String> downloadURL(String imageName) async {
   final firebaseUser = await FirebaseAuth.instance.currentUser;
