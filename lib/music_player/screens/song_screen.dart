@@ -1,13 +1,9 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart' as rxdart;
-
-import '../../firestore_services.dart';
 import '../models/song_model.dart';
 import '../widgets/widgets.dart';
 
@@ -18,9 +14,15 @@ class SongScreen extends StatefulWidget {
   State<SongScreen> createState() => _SongScreenState();
 }
 
+int i = 0;
+
 class _SongScreenState extends State<SongScreen> {
   AudioPlayer audioPlayer = AudioPlayer();
   Song song = Get.arguments ?? Song.songs[0];
+
+  createSongsList(){
+    i = Song.songs.indexOf(song);
+  }
 
   List<AudioSource> createSongsQueue() {
     List<Song> songQueue= [];
@@ -39,6 +41,7 @@ class _SongScreenState extends State<SongScreen> {
   @override
   void initState() {
     super.initState();
+    audioPlayer.play();
 
     audioPlayer.setAudioSource(
       ConcatenatingAudioSource(
@@ -46,6 +49,9 @@ class _SongScreenState extends State<SongScreen> {
       ),
     );
 
+    setState(() {
+
+    });
 
     FirebaseFirestore
         .instance
@@ -55,6 +61,8 @@ class _SongScreenState extends State<SongScreen> {
       'trackTitle': song.title,
       'trackAuthor': song.description
     });
+
+    createSongsList();
   }
 
 
@@ -91,6 +99,12 @@ class _SongScreenState extends State<SongScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: BackButton(
+          color: Colors.white,
+          style: ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(Colors.black.withOpacity(0.3))
+          ),
+        ),
       ),
       extendBodyBehindAppBar: true,
       body: Stack(
@@ -198,11 +212,11 @@ class _BackgroundFilter extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+            begin: Alignment.bottomLeft,
+            end: Alignment.bottomRight,
             colors: [
-              Colors.deepPurple.shade200,
-              Colors.deepPurple.shade800,
+              Colors.deepPurple,
+              Colors.cyan
             ],
           ),
         ),

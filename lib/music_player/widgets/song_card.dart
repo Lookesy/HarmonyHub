@@ -18,8 +18,11 @@ class SongCard extends StatelessWidget {
           height: 60,
           width: MediaQuery.sizeOf(context).width*0.8,
           decoration: BoxDecoration(
-              color: Colors.deepPurple.shade800.withOpacity(0.6),
-            borderRadius: BorderRadius.circular(15)
+              borderRadius: BorderRadius.circular(15),
+            gradient: LinearGradient(colors: [
+              Colors.deepPurple.withOpacity(0.8),
+              Colors.cyan.withOpacity(0.8)
+            ])
           ),
           child: Row(
             children: [

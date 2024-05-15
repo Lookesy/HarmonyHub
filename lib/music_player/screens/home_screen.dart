@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../firestore_services.dart';
 import '../../style.dart';
 import '../models/song_model.dart';
 import '../widgets/widgets.dart';
@@ -34,10 +35,25 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
           actions: [
             Container(
               margin: const EdgeInsets.only(right: 20),
-              child: const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1659025435463-a039676b45a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
-                ),
+              child: FutureBuilder(
+                  future: downloadURL('Avatar.jpg'),
+                  builder: (context,AsyncSnapshot<String> snapshot){
+                    if(snapshot.connectionState==ConnectionState.done&&snapshot.hasData){
+                      return CircleAvatar(
+                        radius: 25,
+                        backgroundImage: NetworkImage(snapshot.data!),
+                      );
+                    }
+                    if (snapshot.connectionState==ConnectionState.waiting){
+                      return CircleAvatar(
+                        radius: 25,
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    return CircleAvatar(
+                      radius: 25,
+                    );
+                  }
               ),
             ),
           ],
@@ -51,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _TrendingMusic(songs: songs),
-                // _PlaylistMusic(playlists: playlists),
               ],
             ),
           ),
@@ -84,7 +99,7 @@ class _TrendingMusic extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         SizedBox(
-          height: MediaQuery.sizeOf(context).height*0.5,
+          height: MediaQuery.sizeOf(context).height*0.7,
           width: MediaQuery.sizeOf(context).width*0.98,
           child: ListView.separated(
             separatorBuilder: (BuildContext context, int index){

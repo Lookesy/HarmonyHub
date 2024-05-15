@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:harmonyhubhest/firestore_services.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../models/song_model.dart';
 import '../screens/song_screen.dart';
 
 class PlayerButtons extends StatefulWidget {
@@ -31,6 +34,14 @@ class _PlayerButtonsState extends State<PlayerButtons> {
               onPressed: (){
                 setState(() {
                   widget.audioPlayer.seekToPrevious();
+                  if(i-1>=0){
+                    i--;
+                    Song soong = Song.songs[i];
+                    Get.close(1);
+                    Get.toNamed('/song', arguments: soong)?.then((value) => setState(() {
+
+                    }));
+                  }
                 });
               },
               iconSize: 45,
@@ -100,8 +111,15 @@ class _PlayerButtonsState extends State<PlayerButtons> {
             return IconButton(
               onPressed: (){
                 setState(() {
-                  widget.audioPlayer.seekToNext().then((value) => setState(() {
-                  }));
+                  widget.audioPlayer.seekToNext();
+                  if(i+1<=Song.songs.length){
+                    i++;
+                    Song soong = Song.songs[i];
+                    Get.close(1);
+                    Get.toNamed('/song', arguments: soong)?.then((value) => setState(() {
+
+                    }));
+                  }
                 });
               },
               iconSize: 45,

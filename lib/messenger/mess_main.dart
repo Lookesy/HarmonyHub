@@ -13,7 +13,6 @@ class UsersPage extends StatefulWidget{
 
 class _UsersPageState extends State<UsersPage>{
 
-  @override
   Widget _buildUserList() {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('users').snapshots(),
@@ -30,7 +29,7 @@ class _UsersPageState extends State<UsersPage>{
           padding: EdgeInsets.all(10),
           children: snapshot.data!.docs
               .map<Widget>((doc) => _buildUserListItem(doc))
-              .toList(),
+              .toList()
         );
       },
     );
@@ -54,7 +53,10 @@ class _UsersPageState extends State<UsersPage>{
                 height: 60,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.deepPurple.shade800.withOpacity(0.6)
+                    gradient: LinearGradient(colors: [
+                      Colors.deepPurple.withOpacity(0.8),
+                      Colors.cyan.withOpacity(0.8)
+                    ])
                 ),
                 child: Row(
                   children: [
