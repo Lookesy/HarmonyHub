@@ -1,16 +1,26 @@
-# harmonyhubhest
+# HarmonyHub
 
-A new Flutter project.
+Приложение, позволяющее найти людей со схожими интересами в музыке. 
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Проект разработан на фреймворке Flutter и использует Firebase. Проект находится в стадии разработки и был создан в качестве дипломной выпускной работы. Дизайн и функционал не являются финальной версией.
 
-A few resources to get you started if this is your first Flutter project:
+Регистрация и авторизация в приложении происходит по методу почта/пароль.
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b) ![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/8a310d7a-3c75-4097-8815-d039f1257818)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+В первой вкладке меню располагается окно с треками. Треки хранятся в ассетах проекта. В будущем планируется сделать загрузку треков из директории мобильного устройства или сделать интеграцию с музыкой ВКонтакте. 
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/8cdebaa2-9dde-4855-91d4-22bce0da8149)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Воспроизведение треков реализовано библиотекой just_audio.
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/1592ffcf-2a07-47c6-b126-954d3d58a839)
+
+На главной странице расположен список пользователей, зарегистрированных в приложении. 
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/f84631b3-c94d-4756-a3b0-5d268fb73f90)
+
+С кажды мпользователем можно начат диалог, кликнув по нему в списке. В данный момент поддерживается отправка тексовых сообщений и эмодзи. В будущем планируется расширить функционал до возможности отправлять мультимедийные сообщения.
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/a0a7569e-1ddf-4326-9ed1-7c7c3b5e520d)
+
+Сменить аватар можно во вкладке "Профиль". После загрузки аватар хранится в Firebase и его видят все пользователи. 
+![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/552d1409-c7df-4687-9364-c64055d1ba1e)
+
