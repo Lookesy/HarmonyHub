@@ -16,21 +16,21 @@
 
 В первой вкладке меню располагается окно с треками. Треки хранятся в ассетах проекта. В будущем планируется сделать загрузку треков из директории мобильного устройства или сделать интеграцию с музыкой ВКонтакте. 
 
-![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/8cdebaa2-9dde-4855-91d4-22bce0da8149)
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/8cdebaa2-9dde-4855-91d4-22bce0da8149" width="350"/>
 
 Воспроизведение треков реализовано библиотекой just_audio.
 
-![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/1592ffcf-2a07-47c6-b126-954d3d58a839)
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/1592ffcf-2a07-47c6-b126-954d3d58a839" width="350"/>
 
 На главной странице расположен список пользователей, зарегистрированных в приложении. 
 
-![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/f84631b3-c94d-4756-a3b0-5d268fb73f90)
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/f84631b3-c94d-4756-a3b0-5d268fb73f90" width="350"/>
 
 С кажды мпользователем можно начат диалог, кликнув по нему в списке. В данный момент поддерживается отправка тексовых сообщений и эмодзи. В будущем планируется расширить функционал до возможности отправлять мультимедийные сообщения.
 
-![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/a0a7569e-1ddf-4326-9ed1-7c7c3b5e520d)
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/a0a7569e-1ddf-4326-9ed1-7c7c3b5e520d" width="350"/>
 
 Сменить аватар можно во вкладке "Профиль". После загрузки аватар хранится в Firebase и его видят все пользователи. 
 
-![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/552d1409-c7df-4687-9364-c64055d1ba1e)
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/552d1409-c7df-4687-9364-c64055d1ba1e" width="350"/>
 
