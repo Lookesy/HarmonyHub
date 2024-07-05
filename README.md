@@ -7,7 +7,7 @@
 Проект разработан на фреймворке Flutter и использует Firebase. Проект находится в стадии разработки и был создан в качестве дипломной выпускной работы. Дизайн и функционал не являются финальной версией.
 
 Регистрация и авторизация в приложении происходит по методу почта/пароль.
-<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b" width="400" /> <img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b](https://github.com/Lookesy/HarmonyHub/assets/58685302/8a310d7a-3c75-4097-8815-d039f1257818)" width="400" />
+<img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b" width="400" /> <img src="https://github.com/Lookesy/HarmonyHub/assets/58685302/8a310d7a-3c75-4097-8815-d039f1257818" width="400" />
 
 
 В первой вкладке меню располагается окно с треками. Треки хранятся в ассетах проекта. В будущем планируется сделать загрузку треков из директории мобильного устройства или сделать интеграцию с музыкой ВКонтакте. 
