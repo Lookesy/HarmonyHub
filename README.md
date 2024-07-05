@@ -8,6 +8,8 @@
 
 Регистрация и авторизация в приложении происходит по методу почта/пароль.
 ![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b) ![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/8a310d7a-3c75-4097-8815-d039f1257818)
+<img src="(https://github.com/Lookesy/HarmonyHub/assets/58685302/11ef3c69-a236-4b1b-85cc-e80b97e8b96b" width="200" />
+
 
 В первой вкладке меню располагается окно с треками. Треки хранятся в ассетах проекта. В будущем планируется сделать загрузку треков из директории мобильного устройства или сделать интеграцию с музыкой ВКонтакте. 
 ![image](https://github.com/Lookesy/HarmonyHub/assets/58685302/8cdebaa2-9dde-4855-91d4-22bce0da8149)
