@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harmonyhubhest/music_player/music_player_mainpage.dart';
 import 'package:harmonyhubhest/user_profile.dart';
-import 'messenger/mess_main.dart';
+import 'features/users/view/users_list.dart';
 import 'style.dart';
 
 
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             children: [
               MusicPlayer(),
-              UsersPage(),
+              MessMain(),
               PopupProfileWidget(),
             ],
           ),
@@ -42,20 +42,19 @@ class HomePage extends StatelessWidget {
         labelColor: Colors.white,
         unselectedLabelColor: Colors.white70,
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: EdgeInsets.all(5.0),
+        indicatorPadding: EdgeInsets.all(3.0),
+        padding: EdgeInsets.all(5),
         indicatorColor: Colors.white,
         labelStyle: interFS15,
+        dividerColor: Colors.transparent,
         tabs: const [
           Tab(
-            text: "Музыка",
             icon: Icon(Icons.headphones),
           ),
           Tab(
-            text: "Чат",
             icon: Icon(Icons.message),
           ),
           Tab(
-            text: "Профиль",
             icon: Icon(Icons.man),
           ),
         ],

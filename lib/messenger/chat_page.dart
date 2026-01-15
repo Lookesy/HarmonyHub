@@ -6,14 +6,14 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:harmonyhubhest/messenger/chat_bubble.dart';
 import 'package:harmonyhubhest/messenger/chat_service.dart';
-import 'package:harmonyhubhest/style.dart';
 
 import '../firestore_services.dart';
 
 class ChatPage extends StatefulWidget {
   final String receiverUserEmail;
   final String receiverUserID;
-  const ChatPage({super.key, required this.receiverUserEmail, required this.receiverUserID});
+  final String receiverUserName;
+  const ChatPage({super.key, required this.receiverUserEmail, required this.receiverUserID, required this.receiverUserName});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -32,12 +32,6 @@ class _ChatPageState extends State<ChatPage> {
       scrollToBottom();
     }
   }
-
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance
-  //       .addPostFrameCallback((_) => scrollToBottom());
-  // }
 
   void scrollToBottom() {
     final bottomOffset = _messageListController.position.maxScrollExtent+50;
@@ -83,36 +77,14 @@ class _ChatPageState extends State<ChatPage> {
         ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.deepPurple,
-              Colors.cyanAccent
-            ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight
-            ),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Colors.black.withOpacity(0.3),
-                Colors.transparent
-              ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter
-              ),
-            ),
+            color: Colors.white
           ),
         ),
       ),
       body: Container(
         height: MediaQuery.sizeOf(context).height,
         decoration: BoxDecoration(
-          color: Colors.black,
-          image: DecorationImage(
-              image: AssetImage('assets/images/image 5.png'),
-              fit: BoxFit.cover,
-            opacity: 0.8
-          ),
+          color: Colors.white
         ),
         child: Stack(
           children: [
@@ -198,7 +170,7 @@ class _ChatPageState extends State<ChatPage> {
             Text(data['senderEmail'],
               style: GoogleFonts.inter(
                   textStyle: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 12,
                       fontWeight: FontWeight.w500
                   )

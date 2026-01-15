@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:harmonyhubhest/style.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/song_model.dart';
 
 class SongCard extends StatelessWidget {
@@ -17,13 +17,6 @@ class SongCard extends StatelessWidget {
       child: Container(
           height: 60,
           width: MediaQuery.sizeOf(context).width*0.8,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-            gradient: LinearGradient(colors: [
-              Colors.deepPurple.withOpacity(0.8),
-              Colors.cyan.withOpacity(0.8)
-            ])
-          ),
           child: Row(
             children: [
               Padding(
@@ -32,7 +25,7 @@ class SongCard extends StatelessWidget {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     image: DecorationImage(
                       image: AssetImage(
                         song.coverUrl,
@@ -42,7 +35,36 @@ class SongCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(song.title, style: interFS15,)
+             Padding(
+                 padding: EdgeInsets.only(left: 5,top: 10,bottom: 10),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text(song.title, style: GoogleFonts.inter(
+                       textStyle: TextStyle(
+                           color: Colors.black,
+                           fontSize: 15,
+                           fontWeight: FontWeight.w600
+                       )
+                   ),),
+                   Spacer(),
+                   Text(song.description, style: GoogleFonts.inter(
+                       textStyle: TextStyle(
+                           color: Color(0xff242424),
+                           fontSize: 13,
+                           fontWeight: FontWeight.w500
+                       )
+                   ),),
+                 ],
+               ),
+             ),
+              Spacer(),
+              IconButton(
+                  onPressed: (){
+                    
+                  },
+                  icon: Icon(Icons.more_vert, color: Color(0xff242424), size: 30,)
+              )
             ],
           )
       ),
