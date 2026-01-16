@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:harmonyhubhest/music_player/music_player_mainpage.dart';
-import 'package:harmonyhubhest/user_profile.dart';
+import 'package:harmonyhubhest/features/profile/view/user_profile.dart';
 import 'features/users/view/users_list.dart';
 import 'style.dart';
 
@@ -11,13 +10,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           bottomNavigationBar: menu(),
           body: TabBarView(
             physics: NeverScrollableScrollPhysics(),
             children: [
-              MusicPlayer(),
               MessMain(),
               PopupProfileWidget(),
             ],
@@ -48,9 +46,6 @@ class HomePage extends StatelessWidget {
         labelStyle: interFS15,
         dividerColor: Colors.transparent,
         tabs: const [
-          Tab(
-            icon: Icon(Icons.headphones),
-          ),
           Tab(
             icon: Icon(Icons.message),
           ),

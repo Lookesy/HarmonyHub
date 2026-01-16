@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart'; // Импортируем flutt
 import 'package:harmonyhubhest/features/auth/bloc/auth_bloc.dart'; // Импортируем наш BLoC
 import 'package:harmonyhubhest/features/auth/repository/auth_repository.dart'; // Импортируем наш репозиторий
 import 'package:harmonyhubhest/features/users/bloc/users_event.dart';
+import 'features/profile/bloc/profile_bloc.dart';
+import 'features/profile/repository/profile_repository.dart';
 import 'features/users/bloc/users_bloc.dart';
 import 'features/users/repository/users_repository.dart';
 import 'firebase_options.dart';
@@ -39,6 +41,11 @@ class MyApp extends StatelessWidget {
           create: (context) => UsersBloc(
             usersRepository: UsersRepository(),
           )..add(LoadUsers()), // <-- Сразу отправляем событие на загрузку!
+        ),
+        BlocProvider<UserProfileBloc>(
+          create: (context) => UserProfileBloc(
+            userProfileRepository: UserProfileRepository(),
+          ), // Загрузку профиля будем запускать при открытии экрана профиля
         ),
       ],
       child: const MaterialApp(

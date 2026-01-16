@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:harmonyhubhest/features/users/bloc/users_bloc.dart';
 import 'package:harmonyhubhest/features/users/bloc/users_state.dart';
-import 'package:harmonyhubhest/messenger/chat_page.dart';
+import 'package:harmonyhubhest/features/chat/view/chat_page.dart';
 
 class MessMain extends StatefulWidget {
   const MessMain({super.key});
